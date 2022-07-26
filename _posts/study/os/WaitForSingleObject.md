@@ -7,7 +7,7 @@ tags:
 categories:
   - study
 date: 2022-07-05 20:25:00
-img: /images/article-banner/QQ截图20220702234227.jpg
+img: /images/article-banner/QQ截图20220726235121.jpg
 typora-root-url: ..\..\..\
 ---
 

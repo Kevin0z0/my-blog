@@ -7,7 +7,7 @@ tags:
 categories:
   - ctf
 date: 2022-07-26 22:52:00
-img: /images/article-banner/QQ截图20220702234227.jpg
+img: /images/article-banner/QQ截图20220726235315.jpg
 typora-root-url: ..\..\..\
 ---
 
@@ -47,11 +47,11 @@ https://github.com/david942j/one_gadget
 
 使用`vmmap`可以查看该程序的内存分配情况，蓝色的就是堆内存分配，可以看到目前还没有数据分配到堆中
 
-![image-20220726231948707](/images/image-20220726231948707.png)
+![vmmap查看内存](/images/image-20220726231948707.png)
 
 使用`n`（next）命令执行一行代码，再次查看可以发现堆中被分配了内存
 
-![image-20220726232102759](/images/image-20220726232102759.png)
+![发现堆内存](/images/image-20220726232102759.png)
 
 ### 查看堆分配
 
@@ -61,14 +61,14 @@ https://github.com/david942j/one_gadget
 
 `inline metadata`也可以当作是malloc本次分配的一些基本信息，如分配的大小等。由于每次都增长`0x10`个空间，所以最后一位就可以用来干别的活了，在malloc中就被设计成了`prev_inuse`标志位，如果该标志位为1，说明这个chunk的前面一个chunk正在被使用，而第一个chunk的`prev_inuse`标志位始终为1，因为在此之前没有别的chunk了
 
-![image-20220726232309573](/images/image-20220726232309573.png)
+![malloc(9)](/images/image-20220726232309573.png)
 
 连续运行多次可以发现，无论分配9个字节还是0个字节还是24个字节，每次分配的内存都是24个字节
 
-![image-20220726232930659](/images/image-20220726232930659.png)
+![malloc(1|0|24)](/images/image-20220726232930659.png)
 
 当malloc分配了25个字节时，实际上分配了0x8+0x28个空间，因为25大于24，所以必须再增加0x10个空间
 
-![image-20220726233521341](/images/image-20220726233521341.png)
+![malloc(25)](/images/image-20220726233521341.png)
 
 每次`vis`的最后都有一个`Top chunk`，这是malloc剩余可分配的内存空间，结合上面的图片可以很快发现，`Top chunk`每次减去的数量和每次分配的数量一致
