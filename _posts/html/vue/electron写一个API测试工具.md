@@ -12,7 +12,7 @@ img: /images/article-banner/QQ截图20220703220722.jpg
 typora-root-url: ..\..\..\
 ---
 
-# ![image-20220604154237893.png](/images/1ca67d7744cf4d5781191fe655fb0383tplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp)
+# ![主页面](/images/1ca67d7744cf4d5781191fe655fb0383tplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp)
 
 ## 简介
 
@@ -186,7 +186,7 @@ function win(done, failed){
 
 #### 什么是Auth-int
 
-![image.png](/images/f15a7125f947414d87336ca0b243fe4dtplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp) 由维基百科所述，大体的意思就是为了传输更加安全，RFC2617增加了一个EntityBody哈希值校验的功能。
+![参考公式](/images/f15a7125f947414d87336ca0b243fe4dtplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp) 由维基百科所述，大体的意思就是为了传输更加安全，RFC2617增加了一个EntityBody哈希值校验的功能。
 
 EntityBody我也找了不少资料，包括[rfc2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec7.html#sec7)中的描述，没怎么看懂，后来翻了Postman的源码，基本可以确定就是请求体了。图中的MD5(entityBody)也就是计算请求体的MD5。
 
@@ -425,7 +425,7 @@ class DB{
 
 VM虚拟机用在预执行脚本和测试脚本的功能中。
 
-![image.png](/images/1d14f942e06c47d7a00c87dad0283872tplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp) 考虑到安全性的问题（~~整个项目就没有很安全~~），我选择了vm2作为js虚拟机，由于虚拟机本身貌似是同步模式，所以只想到了封装一个Promise来实现（试过新建一个进程，但是node和webview之间进程间通信好像不好建立）不知道有没有更简单的方式。实现的原理就是重新封装setInterval和setTimeout，并设置一个EventEmitter监听调用，每调用一次计数器就加1，执行结束或清除定时则计数器减一，并检查是否还有正在执行的定时器，如果没有则向EventEmitter提交finish。
+![测试脚本](/images/1d14f942e06c47d7a00c87dad0283872tplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp) 考虑到安全性的问题（~~整个项目就没有很安全~~），我选择了vm2作为js虚拟机，由于虚拟机本身貌似是同步模式，所以只想到了封装一个Promise来实现（试过新建一个进程，但是node和webview之间进程间通信好像不好建立)不知道有没有更简单的方式。实现的原理就是重新封装setInterval和setTimeout，并设置一个EventEmitter监听调用，每调用一次计数器就加1，执行结束或清除定时则计数器减一，并检查是否还有正在执行的定时器，如果没有则向EventEmitter提交finish。
 
 以下为实现setTimeout的代码，setInterval也同理
 
@@ -499,15 +499,15 @@ return new Promise((resolve, reject) => {
 }()
 ```
 
-**正常执行** ![动画.gif](/images/c29916de8895428a9d79caed274c52betplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp)
+**正常执行** ![setTimeout](/images/c29916de8895428a9d79caed274c52betplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp)
 
 **强制退出**
 
-![动画.gif](/images/9b85f84de0ac4c26a7c6f6cceb6532aftplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp)
+![强制退出](/images/9b85f84de0ac4c26a7c6f6cceb6532aftplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp)
 
 ## 插件开发
 
-![动画.gif](/images/90f908b2792f4006b88b4515b1c0f8e0tplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp) 简单地开发了一个右键插件，实现了字符串替换的功能
+![插件](/images/90f908b2792f4006b88b4515b1c0f8e0tplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp) 简单地开发了一个右键插件，实现了字符串替换的功能
 
 **vuex初始化所有插件内容**
 
